@@ -36,6 +36,7 @@ const Picker = React.createClass({
       PropTypes.array,
     ]),
     align: PropTypes.object,
+    parser: PropTypes.func
   },
 
   getDefaultProps() {
@@ -148,6 +149,7 @@ const Picker = React.createClass({
       onOk: createChainedFunction(calendarProps.onOk, this.onCalendarOk),
       onSelect: createChainedFunction(calendarProps.onSelect, this.onCalendarSelect),
       onClear: createChainedFunction(calendarProps.onClear, this.onCalendarClear),
+      parser: props.parser
     };
 
     return React.cloneElement(props.calendar, extraProps);

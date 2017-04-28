@@ -71,6 +71,7 @@ const Calendar = React.createClass({
     onChange: PropTypes.func,
     renderFooter: PropTypes.func,
     renderSidebar: PropTypes.func,
+    parser: PropTypes.func,
   },
 
   mixins: [CommonMixin, CalendarMixin],
@@ -193,7 +194,7 @@ const Calendar = React.createClass({
     const {
       locale, prefixCls, disabledDate,
       dateInputPlaceholder, timePicker,
-      disabledTime,
+      disabledTime, parser
     } = props;
     const state = this.state;
     const { value, selectedValue, showTimePicker } = state;
@@ -222,6 +223,7 @@ const Calendar = React.createClass({
         showClear
         disabledTime={disabledTime}
         disabledDate={disabledDate}
+        parser={parser}
         onClear={this.onClear}
         prefixCls={prefixCls}
         selectedValue={selectedValue}

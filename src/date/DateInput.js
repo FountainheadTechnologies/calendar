@@ -16,6 +16,7 @@ const DateInput = React.createClass({
     placeholder: PropTypes.string,
     onSelect: PropTypes.func,
     selectedValue: PropTypes.object,
+	  parser: PropTypes.func
   },
 
   getInitialState() {
@@ -41,9 +42,9 @@ const DateInput = React.createClass({
       str,
     });
     let value;
-    const { disabledDate, format, onChange } = this.props;
+	  const { disabledDate, format, onChange, parser } = this.props;
     if (str) {
-      const parsed = moment(str, format, true);
+	    const parsed = parser ? parser(str) : moment(str, format, true);
       if (!parsed.isValid()) {
         this.setState({
           invalid: true,
